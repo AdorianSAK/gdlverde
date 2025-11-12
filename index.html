@@ -1,31 +1,212 @@
-
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Guadalajara Verde — Gráfico Responsive</title>
-  <style>
-    html, body { height: 100%; margin: 0; padding: 0; }
-    #chart { width: 100%; height: 100vh; box-sizing: border-box; padding: 8px; }
-    /* Make legend readable on small screens */
-    @media (max-width: 480px) {
-      .modebar { display: none; }
-      .plotly-legend { font-size: 11px; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alma Linux Config</title>
+    <style>
+
+        pre {
+            background-color: #f0f0f0;
+            color: #101010;
+            padding: 1px;
+            border: 1px solid #ccc;
+            overflow: auto;
+        }
+
+        body {
+            /* Color de letra #6C5EB5 */
+            color: #6C5EB5;
+            /* Color de fondo #1F1166 */
+            background-color: #1F1166;
+        }
+
+    </style>
 </head>
 <body>
-  <div id="chart"></div>
-  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-  <script>
-    var figure = {"data":[{"line":{"color":"#B03A2E","width":3},"mode":"lines+markers","name":"Costos acumulados (M MXN)","type":"scatter","x":[0,1,2,3,4,5,6,7],"y":[12,14,16,18,20,22,24,26]},{"line":{"color":"#2E8B57","width":3},"mode":"lines+markers","name":"Beneficios económicos (M MXN)","type":"scatter","x":[0,1,2,3,4,5,6,7],"y":[0,2,4.8,7.6,10.4,13.4,16.4,19.4]},{"line":{"color":"#1E90A0","dash":"dash","width":3},"mode":"lines+markers","name":"Beneficios ambientales (Valor relativo)","type":"scatter","x":[0,1,2,3,4,5,6,7],"y":[0,1,2.5,4.5,7,10,13,16]},{"line":{"color":"#6A5ACD","dash":"dot","width":3},"mode":"lines+markers","name":"Beneficios sociales (Valor relativo)","type":"scatter","x":[0,1,2,3,4,5,6,7],"y":[0,1.2,2.8,5,7.5,10.5,13.5,17]},{"line":{"color":"#2E7D32","dash":"dashdot","width":3},"mode":"lines+markers","name":"Beneficios del vivero (M MXN)","type":"scatter","x":[0,1,2,3,4,5,6,7],"y":[0,0.5,1.5,3.2,5.5,8.2,11,14]}],"layout":{"legend":{"orientation":"h","x":1,"xanchor":"right","y":1.02,"yanchor":"bottom"},"margin":{"b":40,"l":20,"r":20,"t":60},"template":{"data":{"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"barpolar":[{"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"heatmapgl":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmapgl"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"white","showlakes":true,"showland":true,"subunitcolor":"#C8D4E3"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"light"},"paper_bgcolor":"white","plot_bgcolor":"white","polar":{"angularaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""},"bgcolor":"white","radialaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"yaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"zaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"baxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"bgcolor":"white","caxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2}}},"title":{"text":"Guadalajara Verde — Curvas de Costos y Beneficios (responsive)"},"xaxis":{"title":{"text":"Año"}},"yaxis":{"title":{"text":"Unidades (Millones o Valor Relativo)"}}}};
-    var config = {responsive: true, displaylogo: false};
-    Plotly.newPlot('chart', figure.data, figure.layout, config);
-    // Resize handler to improve mobile fit
-    window.addEventListener('resize', function() {
-      Plotly.Plots.resize(document.getElementById('chart'));
-    });
-  </script>
+    <style>
+        /* CSS for table cell background colors */
+        .cell1 {
+            background-color: #ff9999; /* Light red */
+            color: black;
+            text-align: justify;
+        }
+
+        .cell2 {
+            background-color: #99ff99; /* Light green */
+            color: black;
+            text-align: justify;
+        }
+
+        .cell3 {
+            background-color: #9999ff; /* Light blue */
+            color: black;
+            text-align: justify;
+        }
+
+        .cell4 {
+            background-color: #ffff99; /* Yellow */
+            color: black;
+            text-align: justify;
+        }
+
+        .cell5 {
+            background-color: #999999; /* Gray */
+            color: black;
+            text-align: justify;
+        }
+    </style>
+
+    <h1>Particionado del disco</h1>
+
+    <table border="9">
+        <thead>
+            <tr>
+                <th class="cell5">Mount Point</th>
+                <th class="cell5">Size</th>
+                <th class="cell5">File System Format</th>
+                <th class="cell5">Partition Type</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="cell1">/boot</td>
+                <td class="cell1">1GiB</td>
+                <td class="cell1">ext4</td>
+                <td class="cell1">Standartd Partition</td>
+            </tr>
+            <tr>
+                <td class="cell4">/tmp</td>
+                <td class="cell4">3GiB</td>
+                <td class="cell4">ext4</td>
+                <td class="cell4">Standard Partition</td>
+            </tr>
+            <tr>
+                <td class="cell1">swap</td>
+                <td class="cell1">2GiB</td>
+                <td class="cell1">swap</td>
+                <td class="cell1">Standard Partition</td>
+                
+            </tr>
+            <tr>
+                <td class="cell4">BIOS BOOT</td>
+                <td class="cell4">+2MiB</td>
+                <td class="cell4">BIOS Boot</td>
+                <td class="cell4">Standard Partition</td>
+            </tr>
+            <!-- Add more rows as needed -->
+        </tbody>
+    </table>
+
+    <h1>Configuraciones de AlmaLinux Post-Rackeo</h1>
+    
+    <h2>1. Configuración de red</h2>
+    <p>Tenemos a nuestra disposición al menos dos maneras de configurar nuestra red en un sistema AlmaLinux, pero lo primero es identificar cual es el adaptador de red que tenemos conectado.<br>
+    Para esto, nos valdremos del siguiente comando:</p>
+	 <!-- Comando de red -->
+    <pre><code>
+       ip a
+    </code></pre>
+
+    <p>Ya sea antes de que termines de configurar la red o si ya terminaste, no olvides emitir el ticket a NSO para que configuren el switch y el puerto por el cual este equipo resolverá de<br>
+    manera pública. Recuerda por lo mismo tenerle asignado en perfíl de DNA un puerto y Switch al equipo para que redes no cometa error alguno.</p>
+    <!-- Método A-->
+    <h2>Método A)</h2>
+
+    <li>En cuanto el sistema AlmaLinux arranca, podemos mediante este comando acceder a configurar el adaptador de red designado:</li>
+
+    <pre><code>
+    	nmtui
+    </code></pre>
+
+    <li>Buscaremos el adaptador de red que sabemos que vamos a operar, configuraremos sus IPs añadiendo el netmask en un formato de diagonal, por ejemplo: 143.255.58.146/29. Como este médio para <br>
+    	configurar no cuenta con un apartado para "NetMask", lo haremos de la manera en que se menciona en el ejemplo, también buscaremos marcar la casilla "Activar automáticamente", también activaremos <br>
+    (si no se hizo), manualmente nosotros este adaptador de red, no olvidaremos desactivar el método de conexión IPV6.</li>
+
+    <!-- Método B -->
+    <h2>Método B)</h2>
+
+    <li>Tras haber ientificado el adaptador de red a usar, nos vamos a dirigir a modificar manualmente su configuración por la ruta de archivo de esta manera:</li>
+
+    <pre><code>
+    	nano /etc/sysconfig/network-scripts/ifcfg-eno1
+    </code></pre>
+
+    <li>En el ejemplo mencionado, el adaptador de red es "eno1", aunque también pudiera ser otro según el sistema en que opere o variación de configuraciones que tengan predefinidos los adaptadores de red.<br>
+    	Nos encontraremos con un texto a modificar y buscaremos que coincida con la configuración de red que requerimos, no olvides dejar "ONBOOT" configurado como "yes" para que el adaptador de red arranque<br>
+    automáticamente al iniciar el equipo. A continuación se muestra un recudaro con el bloque de configuración que nos interesa editar:</li>
+
+    <pre><code>
+    	DEVICE=eth0
+        BOOTPROTO=static
+        ONBOOT=yes
+        TYPE=Ethernet
+        NAME=eth0
+        IPADDR=192.168.1.100
+        NETMASK=255.255.255.0
+        GATEWAY=192.168.1.1
+        DNS1=8.8.8.8
+        DNS2=8.8.4.4
+    </code></pre>
+
+	<!-- Paso 2 -->
+
+    <h2>2. Aseguramiento</h2>
+
+    <p>En cuanto logremos resolver a la red, podremos hacer el resto mediante SSH, lo primero será actualizar nuestro sistema mediante el siguiente comando:</p>
+
+    <pre><code>
+    	yum update
+    </code></pre>
+
+    <p>La importancia de esto, es que se instalará SELinux (Security Enhanced Linux), el cual nos va a servir para configuraciones importantes de firewall del sistema.</p>
+
+    <!-- Paso 3 -->
+
+    <h2>3. Configuración de puertos SSH</h2>
+
+    <p>Por seguridad, usaremos otro puerto en vez del standard para acceder mediante SSH al server que estamos configurando. Para esto, usaremos el siguiente comando:</p>
+
+    <pre><code>
+    	nano /etc/ssh/sshd_config
+    </code></pre>
+
+    <p>Simplemente buscaremos la linea en que dice "#port 22", borraremos el signo # y cambiaremos 22 por 1157. De este modo, el daemon que rige la conectividad SSH ahora operará con este puerto.</p>
+    <p>Ahora toca configurar el firewall para permitir coenctividad a través de este puerto, ingresaremos el siguiente comando para ello:</p>
+
+    <pre><code>
+    	firewall-cmd --permanent --zone=public --add-port=1157/tcp
+    </code></pre>
+
+    <p>Y a continuación recargaremos los firewalls para que entre en vigor esta regla, con el siguiente comando:</p>
+
+    <pre><code>
+    	firewall-cmd --reload
+    </code></pre>
+
+    <p>Aún con toda esta configuración, el daemon no va a dar como válido el puerto 1157 para conectividad SSH, seguirá siendo el 22, para cambiar esto, recuriremos al manejo de SELinux,<br>
+    usaremos por lo tanto el siguiente comando</p>
+
+    <pre><code>
+    	semanage port -a -t ssh_port_t -p tcp 1157
+    </code></pre>
+
+    <!-- Paso 3.a -->
+
+    <h3>3.a En caso de no tener "semanage":</h3>
+
+    <p>Si el caso es tal, instalaremos entonces las utilidades que nos permiten hacer uso de "semanage". El comando es el siguiente</p>
+
+    <pre><code>
+        yum install policycoreutils-python-utils
+    </code></pre>
+
+    <p>Hecho esto, el daemon ya debería poder aceptar la nueva configuración, por lo que reiniciaremos su servicio con:</p>
+
+    <pre><code>
+    	systemctl restart sshd
+    </code></pre>
+    
+    
 </body>
 </html>
