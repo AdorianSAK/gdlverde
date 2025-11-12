@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Menu Navegable — Ejemplo</title>
+  <style>
+    :root{--bg:#0f172a;--card:#0b1220;--accent:#60a5fa;--muted:#9ca3af}
+    body{font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; margin:0;background:linear-gradient(180deg,#071025 0%, #07192e 100%);color:#e6eef8;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:2rem}
+    .container{width:100%;max-width:900px;background:var(--card);border-radius:14px;box-shadow:0 10px 30px rgba(2,6,23,.6);overflow:hidden}
+    header{display:flex;align-items:center;gap:1rem;padding:1rem 1.25rem;border-bottom:1px solid rgba(255,255,255,.04)}
+    .logo{width:40px;height:40px;border-radius:8px;background:linear-gradient(135deg,var(--accent),#3b82f6);display:flex;align-items:center;justify-content:center;font-weight:700;color:#022047}
+    nav{display:flex;gap:.5rem;padding:.75rem 1.25rem;flex-wrap:wrap}
+    nav a{color:var(--muted);text-decoration:none;padding:.5rem .8rem;border-radius:8px;font-weight:600}
+    nav a.active{background:linear-gradient(90deg,rgba(96,165,250,.12),rgba(96,165,250,.08));color:var(--accent);box-shadow:inset 0 -2px 0 rgba(96,165,250,.08)}
+    main{padding:1.5rem}
+    section{display:none}
+    section.active{display:block}
+    .footer{padding:1rem;border-top:1px solid rgba(255,255,255,.03);text-align:right;color:var(--muted);font-size:.9rem}
+    /* responsive */
+    @media (max-width:600px){nav{gap:.25rem}header{flex-direction:column;align-items:flex-start}}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">MG</div>
+      <div>
+        <strong>Menu Navegable</strong>
+        <div style="font-size:.85rem;color:var(--muted)">Ejemplo simple con HTML/CSS/JS</div>
+      </div>
+    </header>
+
+    <nav id="menu">
+      <a href="#home" data-target="home" class="active">Inicio</a>
+      <a href="#about" data-target="about">Acerca</a>
+      <a href="#projects" data-target="projects">Proyectos</a>
+      <a href="#contact" data-target="contact">Contacto</a>
+    </nav>
+
+    <main>
+      <section id="home" class="active">
+        <h2>Inicio</h2>
+        <p>Bienvenido al ejemplo de menú navegable. Haz clic en las pestañas del menú para cambiar de sección sin recargar la página.</p>
+      </section>
+
+      <section id="about">
+        <h2>Acerca</h2>
+        <p>Sección de ejemplo donde puedes poner una breve biografía o información sobre el proyecto.</p>
+      </section>
+
+      <section id="projects">
+        <h2>Proyectos</h2>
+        <p>Lista tus proyectos o añade enlaces aquí. Este contenido se muestra y oculta con JavaScript.</p>
+      </section>
+
+      <section id="contact">
+        <h2>Contacto</h2>
+        <p>Formulario de contacto no incluido en este ejemplo minimalista — sirve para mostrar navegación.</p>
+      </section>
+    </main>
+
+    <div class="footer">Usa <code>index.html</code> en la raíz de tu repo para publicarlo con GitHub Pages.</div>
+  </div>
+
+  <script>
+    // Selección del DOM
+    const menu = document.getElementById('menu')
+    const links = menu.querySelectorAll('a')
+    const sections = document.querySelectorAll('main section')
+
+    function goTo(targetId, push = true){
+      // activar link
+      links.forEach(l=>l.classList.toggle('active', l.dataset.target === targetId))
+      // mostrar sección
+      sections.forEach(s=>s.classList.toggle('active', s.id === targetId))
+      // actualizar hash en URL sin hacer scroll adicional
+      if(push) history.pushState({section:targetId}, '', '#'+targetId)
+    }
+
+    // click en enlaces
+    links.forEach(link=>{
+      link.addEventListener('click', e=>{
+        e.preventDefault()
+        const target = link.dataset.target
+        goTo(target)
+      })
+    })
+
+    // manejar navegación con back/forward
+    window.addEventListener('popstate', e=>{
+      const section = (e.state && e.state.section) || location.hash.replace('#','') || 'home'
+      goTo(section, false)
+    })
+
+    // al cargar: si hay hash en URL, navegar a él
+    const initial = location.hash.replace('#','') || 'home'
+    goTo(initial, false)
+  </script>
+</body>
+</html>
+
+
+<!-- README rápido: Cómo publicar en GitHub Pages -->
+<!-- 1) Crea un repo nuevo en GitHub (por ejemplo: menu-ejemplo).
+     2) En tu máquina, crea una carpeta, coloca este archivo como index.html y haz:
+          git init
+          git add index.html
+          git commit -m "Initial commit: menú navegable"
+          git branch -M main
+          git remote add origin https://github.com/<tu-usuario>/<menu-ejemplo>.git
+          git push -u origin main
+     3) En GitHub, ve a Settings > Pages (o en la pestaña "Pages") y selecciona la rama "main" y la carpeta "/ (root)". Guarda.
+     4) GitHub Pages publicará el sitio en https://<tu-usuario>.github.io/<menu-ejemplo>/ — puede tardar unos segundos.
+     5) Para actualizaciones posteriores: edita index.html, commit y push.
+-->
