@@ -229,6 +229,78 @@
       opacity:1;
       transform:none;
     }
+
+    .contexto p,
+    .contexto ol,
+    .contexto li,
+    .contexto strong {  
+      color: #1a1a1a; /* texto gris oscuro elegante */
+    }
+
+    /* --- Carrusel --- */
+    .galeria {
+      margin-top: 60px;
+      text-align: center;
+    }
+
+    .carousel {
+      position: relative;
+      width: 100%;
+      max-width: 720px;
+      height: auto;
+      /*380px;*/
+      margin: 0 auto;
+      overflow: hidden;
+      border-radius: 12px;
+      .carousel-img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+      }
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform 0.5s ease;
+      width: 100%;
+      height: 100%;
+    }
+
+    .carousel-img {
+      flex: 0 0 100%;
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* --- Botones laterales --- */
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: var(--deep-green);
+      color: white;
+      border: none;
+      padding: 12px 16px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 18px;
+      transition: background 0.3s;
+    }
+
+    .carousel-btn:hover {
+      background: #0b3d24;
+    }
+
+    .prev {
+      left: 12px;
+    }
+
+    .next {
+      right: 12px;
+    }
+
+
   </style>
 </head>
 <body>
@@ -274,6 +346,54 @@
         <img class="main-photo" src="guadalajara.jpg" alt="Calle arbolada de Guadalajara">
       </div>
     </section>
+    
+    <!--
+    Descriptiva
+    -->
+
+    <section id="contexto" aria-labelledby="contexto-title">
+      <div class="contexto" id="contexto-card">
+        <h3 id="contexto-title">Proyecto Actual</h3>
+
+        <p class="muted">
+          El proyecto actual de <strong>Guadalajara Verde</strong> es una intervención urbana diseñada para disminuir los efectos de las lluvias en la zona de Mexicaltzingo, donde las inundaciones afectan la movilidad, la seguridad y la vida cotidiana. El proyecto integra tres soluciones compatibles que funcionan como un sistema de manejo de agua y mejora ambiental:
+        </p>
+
+        <ol class="muted">
+          <li>
+            <strong>Asfalto permeable:</strong> Superficies que permiten la filtración del agua hacia el subsuelo, reduciendo encharcamientos y mejorando el drenaje natural.
+          </li>
+          <li>
+            <strong>Áreas verdes ampliadas:</strong> Nuevas jardineras, vegetación y microparques en zonas sin uso. Estas áreas absorben agua, reducen la velocidad del flujo y mejoran el entorno térmico y visual.
+          </li>
+          <li>
+            <strong>Depósito subterráneo de captación:</strong> Un reservorio en el punto de mayor convergencia pluvial, útil para filtración, análisis directo y abastecimiento para usos industriales.
+          </li>
+        </ol>
+      </div>
+    </section>
+
+      <!--
+      Imágenes
+      -->
+
+      <section id="galeria" class="galeria reveal">
+        <h3>Galería 1</h3>
+
+        <div class="carousel" aria-roledescription="carousel">
+          <button type="button" class="carousel-btn prev" aria-label="Anterior">◀</button>
+
+          <div class="carousel-track">
+            <img src="img/foto1.jpg" alt="Foto 1" class="carousel-img">
+            <img src="img/foto2.jpg" alt="Foto 2" class="carousel-img">
+            <img src="img/foto3.jpg" alt="Foto 3" class="carousel-img">
+          </div>
+
+          <button type="button" class="carousel-btn next" aria-label="Siguiente">▶</button>
+        </div>
+      </section>
+
+
 
     <!-- OBJETIVOS -->
     <section id="objetivos" aria-labelledby="obj-title">
@@ -397,6 +517,54 @@
     window.addEventListener('keydown', (e) => {
       if (e.key === 'Tab') document.body.classList.add('show-focus');
     });
+
+    // Images
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // Soporta múltiples carruseles si los hubiera
+      document.querySelectorAll('.carousel').forEach(carousel => {
+        const track = carousel.querySelector('.carousel-track');
+        const slides = Array.from(track.querySelectorAll('.carousel-img'));
+        const prevBtn = carousel.querySelector('.prev');
+        const nextBtn = carousel.querySelector('.next');
+
+        if (!track || slides.length === 0) return;
+
+        let currentIndex = 0;
+
+        function updateCarousel() {
+          const offset = -currentIndex * 100;
+          track.style.transform = `translateX(${offset}%)`;
+          // Opcional: des/activar botones si quieres bloquear en extremos
+          // prevBtn.disabled = currentIndex === 0;
+          // nextBtn.disabled = currentIndex === slides.length - 1;
+        }
+
+        nextBtn.addEventListener('click', () => {
+          currentIndex = (currentIndex + 1) % slides.length;
+          updateCarousel();
+        });
+
+        prevBtn.addEventListener('click', () => {
+          currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+          updateCarousel();
+        });
+
+        // Soporte teclado cuando el ratón está sobre el carrusel
+        carousel.addEventListener('keydown', (e) => {
+          if (e.key === 'ArrowLeft') prevBtn.click();
+          if (e.key === 'ArrowRight') nextBtn.click();
+        });
+
+        // Hacer el carousel focusable para teclado (mejora accesibilidad)
+        carousel.tabIndex = 0;
+
+        // Iniciar en la primera imagen
+        updateCarousel();
+      });
+    });
+
+
 
   </script>
 </body>
