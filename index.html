@@ -281,6 +281,7 @@
       background: var(--deep-green);
       color: white;
       border: none;
+      z-index: 2;
       padding: 12px 16px;
       border-radius: 50%;
       cursor: pointer;
@@ -300,6 +301,13 @@
       right: 12px;
     }
 
+    @media only screen and (max-width: 700px) {
+      header {
+        flex-direction: column;
+      }
+
+
+    }
 
   </style>
 </head>
@@ -309,12 +317,7 @@
 
     <header>
       <div class="brand">
-        <!-- Cambia por <img src="logo.png" alt="Logo" class="logo"> si prefieres una imagen -->
-        <div class="logo" aria-hidden="true">GV</div>
-        <div>
-          <h1>Guadalajara Verde</h1>
-          <p class="muted">Proyecto de rehabilitación urbana y adecuación</p>
-        </div>
+        <img src="Logo.png" alt="Logo" class="logo"/>
       </div>
 
       <nav class="nav" aria-label="Navegación principal">
